@@ -1,0 +1,46 @@
+<div>
+<div class="main">
+  <div class="sub-1">
+      <div>
+        <div>
+          <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for a place">
+        </div>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Places</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let marker of markers | filter:searchText" (click)="setMarker(marker)">
+            <td>{{marker.name}}</td>
+            <td><button *ngIf="button" (click)="showAll()">Show all</button></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  <div class="sub-2">
+    <agm-map
+      [latitude]="lat"
+      [longitude]="lng"
+      [zoom]="zoom"
+      (boundsChange)="boundsChange($event)"
+      (zoomChange)="zoomChange($event)">
+      <!--  [disableDefaultUI]="false"-->
+      <!--  [zoomControl]="false"-->
+      <!--  (mapClick)="mapClicked($event)"-->
+      <agm-marker
+        *ngFor="let m of markers; let i = index"
+        [latitude]="m.lat"
+        [longitude]="m.lng">
+        <agm-info-window >
+          <strong>{{m.name}}</strong>
+        </agm-info-window>
+      </agm-marker>
+    </agm-map>
+  </div>
+
+ </div>
+</div>
+
