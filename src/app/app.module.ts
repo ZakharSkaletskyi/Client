@@ -39,7 +39,7 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter';
     MatInputModule,
     MatSelectModule,
     MatIconModule,
-    AgmCoreModule.forRoot({apiKey: 'AIzaSyBVk768f29oZ539vQRl_WmUr0mMdh-jllM'}),
+    AgmCoreModule.forRoot({}),
     MatListModule,
     NgbModule,
     Ng2SearchPipeModule,
